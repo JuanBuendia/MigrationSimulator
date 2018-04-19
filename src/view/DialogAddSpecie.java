@@ -63,14 +63,14 @@ public class DialogAddSpecie extends JDialog{
 	}
 	
 	public int getSurvival() {
-		
+		return 0;
 	}
 	
 	public int getKnowledge() {
-		
+		return 0;
 	}
 	
 	public int getAdaptability() {
-		
+		return 0;
 	}
 }
