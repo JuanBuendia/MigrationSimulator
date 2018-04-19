@@ -1,11 +1,14 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import controller.Events;
 
 public class SimulatorJFrame extends JFrame{
 
@@ -23,10 +26,16 @@ public class SimulatorJFrame extends JFrame{
 		add(environmentPanel, BorderLayout.CENTER);
 		
 		pnActionButtons = new JPanel();
+		pnActionButtons.setLayout(new GridLayout(1, 2));
+		
 		JButton btnStart = new JButton("Start");
+		btnStart.addActionListener(controller);
+		btnStart.setActionCommand(Events.INIT.toString());
 		pnActionButtons.add(btnStart);
 		
 		JButton btnStop = new JButton("Stop");
+		btnStop.addActionListener(controller);
+		btnStop.setActionCommand(Events.STOP.toString());
 		pnActionButtons.add(btnStop);
 		
 		add(pnActionButtons, BorderLayout.SOUTH);
