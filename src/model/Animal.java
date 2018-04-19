@@ -6,6 +6,8 @@ public class Animal {
 	private int age;
 	private Gender gender;
 	private Status status;
+	private Animal nextInGroup;
+	private Animal nextToGaveBirth;
 
 	public Animal(int id, int age, Gender gender) {
 		this.id = id;
@@ -32,6 +34,22 @@ public class Animal {
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+	
+	public Animal getNextInGroup() {
+		return nextInGroup;
+	}
+
+	public void setNextInGroup(Animal nextInGroup) {
+		this.nextInGroup = nextInGroup;
+	}
+
+	public Animal getNextToGaveBirth() {
+		return nextToGaveBirth;
+	}
+
+	public void setNextToGaveBirth(Animal nextToGaveBirth) {
+		this.nextToGaveBirth = nextToGaveBirth;
 	}
 
 	@Override
