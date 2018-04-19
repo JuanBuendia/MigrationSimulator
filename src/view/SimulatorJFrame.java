@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import controller.Events;
+import model.Specie;
 
 public class SimulatorJFrame extends JFrame{
 
@@ -56,6 +57,12 @@ public class SimulatorJFrame extends JFrame{
 	
 	public void addSpecie() {
 		dialogAddSpecie.setVisible(true);
+	}
+	
+	public Specie acceptSpecie(int id) {
+		dialogAddSpecie.setDefaultData();
+		dialogAddSpecie.setVisible(false);
+		return dialogAddSpecie.getNewSpecie(id);
 	}
 	
 	public void initEnvironmentPanel(){

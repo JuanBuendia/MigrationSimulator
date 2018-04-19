@@ -31,10 +31,16 @@ public class ControllerProject implements ActionListener{
 		case STOP:
 			stop();
 			break;
+		case ACCEPT_SPECIE:
+			acceptSpecie();
 		default:
 			break;
 
 		}
+	}
+
+	private void acceptSpecie() {
+		
 	}
 
 	private void stop() {
@@ -50,6 +56,6 @@ public class ControllerProject implements ActionListener{
 	}
 
 	private void addSpecie() {
-		
+		mainWindow.addSpecie();
 	}
 }

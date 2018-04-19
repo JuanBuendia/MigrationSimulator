@@ -11,6 +11,7 @@ import controller.Events;
 import model.Echosystem;
 import model.Specie;
 
+import java.awt.Component;
 import java.awt.event.ActionListener;
 
 public class DialogAddSpecie extends JDialog{
@@ -54,23 +55,20 @@ public class DialogAddSpecie extends JDialog{
 		JButton btnAccept = new JButton(ACCEPT);
 		btnAccept.addActionListener(controller);
 		btnAccept.setFont(btnAccept.getFont().deriveFont(24.f));
-		btnAccept.setActionCommand(Events.ADD_SPECIE.toString());
+		btnAccept.setActionCommand(Events.ACCEPT_SPECIE.toString());
+		btnAccept.setAlignmentX(Component.CENTER_ALIGNMENT);
 		add(btnAccept);
 	}
 	
-	public String getName() {
-		return txSpecieName.getText();
+	public void setDefaultData() {
+		txSpecieName.setText(null);
+		spAdaptability.setValue(null);
+		spKnowledge.setValue(null);
+		spSurvival.setValue(null);
 	}
 	
-	public int getSurvival() {
-		return 0;
-	}
-	
-	public int getKnowledge() {
-		return 0;
-	}
-	
-	public int getAdaptability() {
-		return 0;
+	public Specie getNewSpecie(int id) {
+		return new Specie(id, txSpecieName.getText(), ((int) spSurvival.getValue()), ((int) spAdaptability.getValue()),
+				((int) spKnowledge.getValue()));
 	}
 }
