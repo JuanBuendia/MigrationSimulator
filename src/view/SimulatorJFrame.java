@@ -60,9 +60,10 @@ public class SimulatorJFrame extends JFrame{
 	}
 	
 	public Specie acceptSpecie(int id) {
-		dialogAddSpecie.setDefaultData();
+		Specie specie = dialogAddSpecie.getNewSpecie(id);
 		dialogAddSpecie.setVisible(false);
-		return dialogAddSpecie.getNewSpecie(id);
+		dialogAddSpecie.setDefaultData();
+		return specie;
 	}
 	
 	public void initEnvironmentPanel(){

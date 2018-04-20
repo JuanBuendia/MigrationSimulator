@@ -40,7 +40,7 @@ public class ControllerProject implements ActionListener{
 	}
 
 	private void acceptSpecie() {
-		
+		echosystem.addSpecie(mainWindow.acceptSpecie(0));
 	}
 
 	private void stop() {

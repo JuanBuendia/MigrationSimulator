@@ -62,9 +62,9 @@ public class DialogAddSpecie extends JDialog{
 	
 	public void setDefaultData() {
 		txSpecieName.setText(null);
-		spAdaptability.setValue(null);
-		spKnowledge.setValue(null);
-		spSurvival.setValue(null);
+		spAdaptability.setValue(50);
+		spKnowledge.setValue(50);
+		spSurvival.setValue(50);
 	}
 	
 	public Specie getNewSpecie(int id) {
