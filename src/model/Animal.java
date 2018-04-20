@@ -3,7 +3,7 @@ package model;
 public class Animal {
 
 	private int x;
-//	private int y;
+	private int y;
 	private int id;
 	private int age;
 	private Gender gender;
@@ -11,7 +11,7 @@ public class Animal {
 	private Animal nextInGroup;
 	private Animal nextToGaveBirth;
 	
-	public Animal(int x) {
+	public Animal(int x, int y) {
 		this.x = x;
 	}
 	
@@ -27,7 +27,7 @@ public class Animal {
 	}
 	
 	public int getAge() {
-		return age;
+		return age++;
 	}
 
 	public Gender getGender() {
@@ -58,13 +58,23 @@ public class Animal {
 		this.nextToGaveBirth = nextToGaveBirth;
 	}
 	
-	public void move() {
+	public void moveX() {
 		if (x < 1000) {
 			x+=10;
 		}
 	}
 	
+	public void moveY() {
+		if (y < 1000) {
+			y+=10;
+		}
+	}
+	
 	public int getX() {
+		return x;
+	}
+	
+	public int getY() {
 		return x;
 	}
 

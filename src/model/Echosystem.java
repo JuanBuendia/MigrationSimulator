@@ -26,9 +26,22 @@ public class Echosystem {
 		return Specie.createAnimal();
 	}
 	
+	public ArrayList<Animal> getAnimals(Specie specie){
+		if (listSpecies.contains(specie)) {
+			return specie.getAnimals();
+		}
+		return null;
+	}
+	
 	public void addAnimal(Specie specie, Animal animal) {
 		if (listSpecies.contains(specie)) {
 			specie.addAnimal(animal);
 		}	
+	}
+
+	public void moveAnimals(Specie specie) {
+		if (listSpecies.contains(specie)) {
+			specie.moveAnimals();
+		}
 	}
 }

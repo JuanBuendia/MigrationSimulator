@@ -4,10 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import controller.Events;
+import model.Animal;
 import model.Specie;
 
 public class SimulatorJFrame extends JFrame{
@@ -67,5 +70,7 @@ public class SimulatorJFrame extends JFrame{
 		environmentPanel.initEnvironment();
 	}
 	
-	
+	public void refreshSpecie(ArrayList<Animal> animals) {
+		environmentPanel.refreshAnimals(animals);
+	}
 }

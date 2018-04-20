@@ -21,6 +21,7 @@ public class Specie {
 		this.lifeCicle = lifeCicle;
 		this.adaptability = adaptability;
 		this.groundKnowledge = groundKnowledge;
+		animals = new ArrayList<>();
 	}
 
 	public int getId() {
@@ -63,12 +64,35 @@ public class Specie {
 		return animalGroup;
 	}
 	
+	public ArrayList<Animal> getAnimals(){
+		return animals;
+	}
+	
 	public static Animal createAnimal() {
-		return new Animal((int) (Math.random() * 100));
+		return new Animal(pos(),(int) pos());
+	}
+	
+	public static int pos() {
+		return (int) (Math.random() * 100);
 	}
 	
 	public void addAnimal(Animal animal) {
 		animals.add(animal);
+	}
+	
+	public void moveAnimals() {
+		for (Animal animal : animals) {
+			animal.moveX();
+			animal.moveY();
+		}
+	}
+	
+	public void verifyAge() {
+		for (Animal animal : animals) {
+			if(animal.getAge() >= 24 && animal.getAge() <= 36 ) {
+				animal.setStatus(Status.MATURE);
+			}
+		}
 	}
 
 	@Override

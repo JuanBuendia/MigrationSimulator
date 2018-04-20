@@ -2,7 +2,7 @@ package model;
 
 public enum Status {
 
-	DEAD("Muerte"), PREGNANT("Embarazo"), SICK("Enfermedad"), WELL("Bien");
+	DEAD("Muerte"), PREGNANT("Embarazo"), SICK("Enfermedad"), WELL("Bien"), MATURE("Madurez");
 	
 	String status;
 	

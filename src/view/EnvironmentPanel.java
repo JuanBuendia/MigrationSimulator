@@ -18,7 +18,7 @@ public class EnvironmentPanel extends JPanel{
 		
 	}
 
-	public void refreshHero(ArrayList<Animal> animals) {
+	public void refreshAnimals(ArrayList<Animal> animals) {
 		this.listAnimals = animals;
 		repaint();
 	}
@@ -26,9 +26,11 @@ public class EnvironmentPanel extends JPanel{
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		for (Animal animal : listAnimals) {
-			if (animal != null) {
-				g.fillOval(animal.getX(), 100, 50, 50);
+		if (listAnimals != null) {
+			for (Animal animal : listAnimals) {
+				if (animal != null) {
+					g.fillOval(animal.getX(), animal.getY(), 50, 50);
+				}
 			}
 		}
 	}
