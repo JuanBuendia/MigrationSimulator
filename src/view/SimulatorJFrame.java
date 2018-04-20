@@ -4,12 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import controller.Events;
 import model.Specie;
 
@@ -69,4 +66,6 @@ public class SimulatorJFrame extends JFrame{
 	public void initEnvironmentPanel(){
 		environmentPanel.initEnvironment();
 	}
+	
+	
 }

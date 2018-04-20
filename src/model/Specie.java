@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Queue;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Specie {
@@ -10,6 +11,7 @@ public class Specie {
 	private int lifeCicle;
 	private int adaptability;
 	private int groundKnowledge;
+	private ArrayList<Animal> animals;
 	private Queue<Animal> pregnancyQueue;
 	private LinkedList<Animal> animalGroup;
 	
@@ -59,6 +61,14 @@ public class Specie {
 
 	public LinkedList<Animal> getAnimalGroup() {
 		return animalGroup;
+	}
+	
+	public Animal createAnimal() {
+		return new Animal((int) (Math.random() * 100));
+	}
+	
+	public void addAnimal(Animal animal) {
+		animals.add(animal);
 	}
 
 	@Override
