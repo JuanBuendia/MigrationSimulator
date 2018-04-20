@@ -63,7 +63,7 @@ public class Specie {
 		return animalGroup;
 	}
 	
-	public Animal createAnimal() {
+	public static Animal createAnimal() {
 		return new Animal((int) (Math.random() * 100));
 	}
 	

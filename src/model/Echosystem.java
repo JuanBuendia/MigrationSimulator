@@ -21,4 +21,14 @@ public class Echosystem {
 	public ArrayList<Specie> getListSpecies() {
 		return listSpecies;
 	}
+	
+	public Animal createAnimal() {
+		return Specie.createAnimal();
+	}
+	
+	public void addAnimal(Specie specie, Animal animal) {
+		if (listSpecies.contains(specie)) {
+			specie.addAnimal(animal);
+		}	
+	}
 }

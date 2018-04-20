@@ -3,7 +3,10 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Timer;
+
 import model.Echosystem;
+import model.Specie;
 import view.SimulatorJFrame;
 
 public class ControllerProject implements ActionListener{
@@ -14,6 +17,17 @@ public class ControllerProject implements ActionListener{
 	public ControllerProject() {
 		echosystem = new Echosystem();
 		mainWindow = new SimulatorJFrame(this);
+		
+		final Specie specie = Echosystem.createSpecie(0, "mutante", 80, 40, 10);
+		echosystem.addSpecie(specie);
+		Timer timer = new Timer(1000, new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				echosystem.addAnimal(specie, echosystem.createAnimal());
+			}
+		});
+		timer.start();
 	}
 	
 	@Override
