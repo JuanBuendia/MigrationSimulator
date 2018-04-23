@@ -1,0 +1,2 @@
+Tiempo total: 0null
+Animal [id=19, gender=MALE, status=DEAD]

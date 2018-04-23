@@ -1,23 +1,30 @@
 package controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.Timer;
-
+import model.Animal;
 import model.Echosystem;
 import model.Specie;
+
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import view.SimulatorJFrame;
+import persistence.FileManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 public class ControllerProject implements ActionListener{
 
+	private int timeLapse;
+	private Timer generalTimer;
 	private Echosystem echosystem;
+	private FileManager fileManager;
 	private SimulatorJFrame mainWindow;
 	
 	public ControllerProject() {
 		echosystem = new Echosystem();
+		fileManager = new FileManager();
 		mainWindow = new SimulatorJFrame(this);
-		
 	}
 	
 	@Override
@@ -39,39 +46,62 @@ public class ControllerProject implements ActionListener{
 			acceptSpecie();
 		default:
 			break;
-
 		}
 	}
 
-	private void acceptSpecie() {
-		echosystem.addSpecie(mainWindow.acceptSpecie(0));
-	}
-
-	private void stop() {
-		
-	}
-
-	private void showReport() {
-		
-	}
-
 	private void init() {
-		final Specie specie = Echosystem.createSpecie(0, "mutante", 80, 40, 10);
-		echosystem.addSpecie(specie);
-		
-		Timer timer = new Timer(1000, new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				echosystem.addAnimal(specie, echosystem.createAnimal());
-				echosystem.moveAnimals(specie);
-				mainWindow.refreshSpecie(echosystem.getAnimals(specie));
-			}
-		});
-		timer.start();
+		if (!echosystem.getListSpecies().isEmpty()) {
+			generalTimer = new Timer(1000, new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					checkForSpecies();
+					echosystem.giveBirth();
+					echosystem.moveAnimals();
+					echosystem.checkNaturalDead();
+					echosystem.impregnateAnimals();
+					echosystem.incrementAnimalAge();
+					mainWindow.refreshSpecie(echosystem.getListSpecies());
+				}
+			});
+			generalTimer.start();
+		}else {
+			addSpecie();
+		}
 	}
 
 	private void addSpecie() {
 		mainWindow.addSpecie();
+	}
+	
+	private void acceptSpecie() {
+		Specie sp = mainWindow.acceptSpecie();
+		echosystem.addSpecie(sp);
+		for (int i = 0; i < 20; i++) {
+			Animal an = echosystem.createAnimal();
+			echosystem.addAnimal(sp, an);
+		}
+	}
+	
+	private void checkForSpecies() {
+		ArrayList<Specie> list = echosystem.getListSpecies();
+		for (Specie specie : list) {
+			if(specie.checkStatus()) {
+				stop();
+			}
+		}
+	}
+	
+	private void stop() {
+		generalTimer.stop();
+		JOptionPane.showMessageDialog(mainWindow, "Especie terminada");
+	}
+
+	private void showReport() {
+		try {
+			fileManager.writeReport(timeLapse, echosystem.reportSpecies());
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 }
